@@ -4,7 +4,7 @@
 -------
 
 
-The `bisec` package allows you to estimate eigenvalues and eigenvectors and fit a principal component regression (PCR) using a Bayesian approach  under the assumption of a spiked high-dimensional covariance matrix. A key advantage of the proposed models is that they can provide uncertainty estimates. The algorithm is also straightforward to implement, as it requires only inverse-Wishart sampling and spectral decomposition.
+The `bisew` package allows you to estimate eigenvalues and eigenvectors and fit a principal component regression (PCR) using a Bayesian approach  under the assumption of a spiked high-dimensional covariance matrix. A key advantage of the proposed models is that they can provide uncertainty estimates. The algorithm is also straightforward to implement, as it requires only inverse-Wishart sampling and spectral decomposition.
 
 
 ### Installation
@@ -21,26 +21,26 @@ To install the most up-to-date version from GitHub, use the following commands:
 if (!("devtools" %in% installed.packages()[,"Package"])) {
     install.packages("devtools")
 }
-devtools::install_github("swpark0413/bisec")
+devtools::install_github("swpark0413/besiw")
 ```
 
 #### Option 2: Install from a bundled package.
 
-First, download a bundled package from the [Releases](https://github.com/swpark0413/bisec/releases/) page. Then, install it using the command below:
+First, download a bundled package from the [Releases](https://github.com/swpark0413/besiw/releases/) page. Then, install it using the command below:
 
 ``` R
-# Replace "~/path/bisec_0.0.0.tar.gz" with the path to your downloaded file
-install.packages("~/path/bisec_0.0.0.tar.gz", type = "source", repos = NULL)
+# Replace "~/path/bisew_0.0.0.tar.gz" with the path to your downloaded file
+install.packages("~/path/bisew_0.0.0.tar.gz", type = "source", repos = NULL)
 ```
 
 
 ### Example
 -------
 
-Here is an example of how to use the `bisec` package:
+Here is an example of how to use the `bisew` package:
 
 ``` r
-library(bisec)
+library(bisew)
 
 # generate a spiked covariance matrix:
 n <- 50
@@ -88,5 +88,5 @@ If you use the bisec package in your research, please cite the following paper:
 ### License
 -------
 
-The package is distributed under the GPL-3.0 license. See the [`LICENSE`](https://github.com/swpark0413/bisec/blob/main/LICENSE) file for more details
+The package is distributed under the GPL-3.0 license. See the [`LICENSE`](https://github.com/swpark0413/bisew/blob/main/LICENSE) file for more details
 
