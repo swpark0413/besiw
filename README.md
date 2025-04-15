@@ -45,18 +45,23 @@ library(bisew)
 # generate a spiked covariance matrix:
 n <- 50
 p <- 100
-K <- 4
-leading <- c(1000,500,200,100)
-remaining <- rep(0.1, p - K)
+K <- 3
+
+leading <- c(50,20,10)
+remaining <- rep(1, p - K)
 Sigma0 <- diag(c(leading, remaining), p)
 
 # generate data
 set.seed(413)
 X <- MASS::mvrnorm(n = n, mu = rep(0, p), Sigma = Sigma0)
-
-# estimate eigenvalues and eigenvectors:
-res <- bisec::spikedEIG(X = X, K = 4, prior = list(nu = (p+2), A = diag(2, p)), nsample = 100)
-est <- bisec::estimate(res)
+ 
+# Compute both posterior means and credible intervals for eigenvalues and eigenvectors of a covariance matrix:
+H <- 4 * diag(rep(1, p))
+iter <- 100000
+burnin <- floor(iter / 2)
+thin <- 100
+res <- besiw::eigenGSIW(X = X, k = K, H = H, nmcmc = iter, nburn = burnin, nthin = thin)
+est <- besiw::estimate(res)
 ```
 
 
@@ -66,8 +71,8 @@ est <- bisec::estimate(res)
 
 If you use the bisec package in your research, please cite the following paper:
 
-- Kwangmin Lee, Sewon Park, Seongmin Kim and Jaeyong Lee.
-  Posterior asymptotics of high-dimensional spiked covariance model with inverse-Wishart prior.
+- Seongmin Kim, Kwangmin Lee, Sewon Park, and Jaeyong Lee.
+  Eigenstructure inference for high-dimensional covariance with generalized shrinkage inverse-Wishart prior.
   arXiv preprint arXiv:2412.10753.
 
 <!-- BibTeX citation:
