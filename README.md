@@ -3,7 +3,7 @@
 ### Overview
 -------
 
-The `besiw` package provides a Bayesian framework for eigenstructure inference under the assumption of a spiked high-dimensional covariance matrix. Based on the generalized shrinkage inverse-Wishart (gSIW) prior, the method improves upon traditional inverse-Wishart and shrinkage inverse-Wishart priors by explicitly distinguishing between spiked and non-spiked components, enabling more accurate estimation of eigenvalues and eigenvectors in high-dimensional settings. The package implements MCMC procedures for posterior inference, including point and interval estimation, model selection for the number of spiked components, and diagnostic plots for assessing MCMC convergence.
+The `besiw` package provides a Bayesian framework for eigenstructure inference under the assumption of a spiked high-dimensional covariance matrix. Based on the generalized shrinkage inverse-Wishart (gSIW) prior, the method improves upon traditional inverse-Wishart and shrinkage inverse-Wishart priors by explicitly distinguishing between spiked and non-spiked components, enabling more accurate estimation of eigenvalues and eigenvectors in high-dimensional settings. The package implements computationally effective MCMC procedures for posterior inference, including point and interval estimation, model selection for the number of spiked components, and diagnostic plots for assessing MCMC convergence.
 
 ### Installation
 -------
