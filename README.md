@@ -37,14 +37,13 @@ install.packages("~/path/bisew_0.0.0.tar.gz", type = "source", repos = NULL)
 
 Here is an example of how to use the `bisew` package:
 
-``` r
+``` R
 library(bisew)
 
 # generate a spiked covariance matrix:
 n <- 50
 p <- 100
 K <- 3
-
 leading <- c(50,20,10)
 remaining <- rep(1, p - K)
 Sigma0 <- diag(c(leading, remaining), p)
