@@ -66,7 +66,7 @@ est <- besiw::estimate(res)
 ### Citation
 -------
 
-If you use the bisec package in your research, please cite the following paper:
+If you use the `besiw` package in your research, please cite the following paper:
 
 - Seongmin Kim, Kwangmin Lee, Sewon Park, and Jaeyong Lee.
   Eigenstructure inference for high-dimensional covariance with generalized shrinkage inverse-Wishart prior.
