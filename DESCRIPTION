@@ -1,0 +1,16 @@
+Package: besiw
+Type: Package
+Title: Eigenstructure Inference for High-Dimensional Covariance Using Generalized Shrinkage Inverse-Wishart Priors
+Version: 1.0
+Date: 2025-04-23
+Author: Seongmin Kim [aut, cre]
+  Kwangmin Lee [aut],
+  Sewon Park [aut, cre],
+  Jaeyong Lee [aut]
+Maintainer: Sewon Park <swpark0413@gmail.com>
+Description: This package provides a Bayesian method for estimating the eigenstructure of high-dimensional covariance matrices using the generalized shrinkage inverse-Wishart (gSIW) prior. It implements MCMC-based posterior sampling for eigenvalues and eigenvectors, along with functions for model selection, diagnostic plotting, and posterior point and interval estimation. The gSIW prior generalizes the inverse-Wishart and shrinkage inverse-Wishart priors, offering improved accuracy when the sample covariance eigenstructure is inconsistent. Theoretical properties and empirical performance are supported by asymptotic analysis and simulation studies.
+License: GPL-3
+Imports: Rcpp (>= 1.0.12), magrittr, GPArotation, Matrix, pracma, abind, bayesplot, future, furrr, patchwork
+LinkingTo: Rcpp, RcppArmadillo, RcppEigen, RcppProgress
+RoxygenNote: 7.2.3
+Encoding: UTF-8
