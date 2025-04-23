@@ -70,7 +70,7 @@ If you use the `besiw` package in your research, please cite the following paper
 
 - Seongmin Kim, Kwangmin Lee, Sewon Park, and Jaeyong Lee.
   Eigenstructure inference for high-dimensional covariance with generalized shrinkage inverse-Wishart prior.
-  arXiv preprint arXiv:2412.10753.
+  arXiv preprint arXiv:25xx.xxxxx.
 
 <!-- BibTeX citation:
 ``` bibtex
