@@ -9,6 +9,7 @@ eigenGSIW(
   k,
   a_vec = NULL,
   H = NULL,
+  k_free = TRUE,
   nmcmc = 1e+05,
   nburn = floor(nmcmc/2),
   nthin = 100,
@@ -23,6 +24,10 @@ eigenGSIW(
 \item{a_vec}{A numeric vector of length \eqn{p}, specifying prior hyperparameters for the generalized inverse-Wishart prior, which controls the shrinkage behavior of the eigenvalues.}
 
 \item{H}{A \eqn{p \times p} positive definite matrix used in the prior specification.}
+
+\item{k_free}{A logical value indicating whether to use the \eqn{k}-free construction of \code{a_vec}. 
+If \code{TRUE}, \code{a_vec} is generated without specifying \eqn{k}; if \code{FALSE}, the \eqn{k}-based construction is used and \code{k} must be provided. 
+This argument is ignored when \code{a_vec} is supplied.}
 
 \item{nmcmc}{The total number of MCMC iterations.}
 

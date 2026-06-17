@@ -37,6 +37,9 @@
 #' @param k An integer specifying the number of spiked eigenvalues.
 #' @param a_vec  A numeric vector of length \eqn{p}, specifying prior hyperparameters for the generalized inverse-Wishart prior, which controls the shrinkage behavior of the eigenvalues.
 #' @param H A \eqn{p \times p} positive definite matrix used in the prior specification.
+#' @param k_free A logical value indicating whether to use the \eqn{k}-free construction of \code{a_vec}. 
+#'   If \code{TRUE}, \code{a_vec} is generated without specifying \eqn{k}; if \code{FALSE}, the \eqn{k}-based construction is used and \code{k} must be provided. 
+#'   This argument is ignored when \code{a_vec} is supplied.
 #' @param nmcmc The total number of MCMC iterations.
 #' @param nburn The number of burn-in iterations to discard.
 #' @param nthin The thinning interval for storing posterior samples.
@@ -94,7 +97,7 @@
 
 
 
-eigenGSIW <- function(X, k, a_vec = NULL, H = NULL,
+eigenGSIW <- function(X, k, a_vec = NULL, H = NULL, k_free = TRUE, 
                   nmcmc = 100000, nburn = floor(nmcmc / 2), nthin = 100,
                   progress = TRUE) {
   
@@ -110,10 +113,16 @@ eigenGSIW <- function(X, k, a_vec = NULL, H = NULL,
       a_vec = rep(0, p)
       ed <- eig_decomp(S/n)
       evals_S <- rev(ed$values)
-      mean_non_sp <- mean(evals_S[(k + 1):n])
-      a_vec[1:k] <- n * mean_non_sp / (evals_S[1:k] - mean_non_sp) / 2 + 2
-      a_vec[(k + 1):n] <- p / 2
-      a_vec[(n + 1):p] <- p * 2
+      if(k_free){
+        t_val <- evals_S[n]
+        a_vec[1:(n - 1)] <- (n * t_val) / (2*(evals_S[1:(n - 1)] - t_val)) + 2
+        a_vec[n:p] <- 2 * a_vec[n - 1]
+      } else {
+        mean_non_sp <- mean(evals_S[(k + 1):n])
+        a_vec[1:k] <- n * mean_non_sp / (evals_S[1:k] - mean_non_sp) / 2 + 2
+        a_vec[(k + 1):n] <- p / 2
+        a_vec[(n + 1):p] <- p * 2
+      }
     } else {
       a_vec = rep(4, p)
     }
